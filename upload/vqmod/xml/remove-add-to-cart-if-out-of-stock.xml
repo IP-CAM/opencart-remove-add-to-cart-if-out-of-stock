@@ -13,6 +13,14 @@ echo "<span style=\"color: red; font-size: 16px;\"><span class=\"outofstock\">" 
 echo "<input type=\"button\" value=\"" . $button_cart . "\" id=\"button-cart\" class=\"button\" />";
 } ?>]]></add>
 		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a>]]></search>
+			<add><![CDATA[<?php if ($stock_qty <= 0) {
+echo "<span style=\"color: red; font-size: 16px;\"><span class=\"outofstock\">" . $stock_status . "</span></span>";
+} else { 
+echo "<a onclick=\"addToCart('" . $product['product_id'] . "');\" class=\"button\">" . $button_cart . "</a>";
+} ?>]]></add>
+		</operation>		
 	</file>
 	
 	<file name="catalog/controller/product/product.php">
